@@ -23,7 +23,7 @@ playground for my Clojure programming.
 
 ## Installation
 
-This webapp is built with Leininge and can be run from the dev REPL or
+This webapp is built with Leiningen and can be run from the dev REPL or
 as a uberjar. Note the following additional requirements:
 
 *   The Datomic Pro client library dependency must be installed locally.
