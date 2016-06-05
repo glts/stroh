@@ -1,0 +1,32 @@
+[{:db/id #db/id[:db.part/db]
+  :db/ident :task/id
+  :db/valueType :db.type/uuid
+  :db/cardinality :db.cardinality/one
+  :db/unique :db.unique/identity
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/title
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/status
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+ [:db/add #db/id[:db.part/user] :db/ident :task.status/open]
+ [:db/add #db/id[:db.part/user] :db/ident :task.status/in-progress]
+ [:db/add #db/id[:db.part/user] :db/ident :task.status/done]
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :task/type
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db.install/_attribute :db.part/db}
+ [:db/add #db/id[:db.part/user] :db/ident :task.type/book]
+ [:db/add #db/id[:db.part/user] :db/ident :task.type/film]
+ [:db/add #db/id[:db.part/user] :db/ident :task.type/video]
+ [:db/add #db/id[:db.part/user] :db/ident :task.type/event]
+ [:db/add #db/id[:db.part/user] :db/ident :task.type/article]]

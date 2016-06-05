@@ -1,0 +1,2 @@
+{:server {:port 3000}
+ :database {:uri "datomic:couchbase://localhost:4334/stroh/stroh"}}

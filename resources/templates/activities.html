@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link href="/style/stroh.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="create">
+      <form method="post"
+            action="task/new">
+        <label>Title <input type=text name=title required></label>
+        <select name=type>
+          <option value=book>Book</option>
+          <option value=film>Film</option>
+          <option value=video>Video</option>
+          <option value=event>Event</option>
+          <option value=article>Article</option>
+        </select>
+        <select name=status>
+          <option value=open>open</option>
+          <option value=in-progress>in progress</option>
+          <option value=done>done</option>
+        </select>
+        <button>Submit</button>
+      </form>
+    </div>
+    <div id="activities">
+      <div id="open" class="activity">
+        <p>Nothing in queue.</p>
+      </div>
+      <div id="in-progress" class="activity">
+        <p>No activities.</p>
+      </div>
+      <div id="done" class="activity">
+        <p>Nothing done yet.</p>
+      </div>
+    </div>
+  </body>
+</html>

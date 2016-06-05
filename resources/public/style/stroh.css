@@ -1,0 +1,26 @@
+body {
+  font-size: 1.2em;
+}
+
+header > h1 {
+  text-align: center;
+}
+
+#activities {
+  width: 50em;
+  margin: 0 auto;
+}
+
+.activity {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+}
+
+.activity > ol {
+  list-style: none;
+}
+
+.activity > p {
+  background-color: beige;
+}
