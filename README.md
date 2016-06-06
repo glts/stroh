@@ -53,3 +53,21 @@ To build the app for deployment, simply create a uberjar:
 The final JAR artifact can then be run directly:
 
     java -jar target/uberjar/stroh-0.1.0-SNAPSHOT-standalone.jar
+
+## Datomic administration
+
+In the following assume that `DATOMIC_HOME` points to where you
+extracted the Datomic Pro distribution. For example:
+
+    export DATOMIC_HOME=$HOME/src/stroh/vendor/datomic-pro-0.9.5372
+
+### Console
+
+To start a Datomic console (an admin UI in the browser), first make sure
+both the storage backend and a transactor are running, then switch to
+the Datomic distribution and run `bin/console`:
+
+    cd $DATOMIC_HOME
+    bin/console -p 8080 strohtest datomic:couchbase://localhost/strohtest/
+
+Access the console at `http://localhost:8080/browse`.
