@@ -3,7 +3,7 @@
   (:require [clojure.set :as set]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [medley.core :refer [map-keys random-uuid uuid?]]
+            [medley.core :refer [map-keys random-uuid]]
             [stroh.db :as db]))
 
 (s/def :task/id uuid?)
