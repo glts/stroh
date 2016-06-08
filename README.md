@@ -61,6 +61,21 @@ extracted the Datomic Pro distribution. For example:
 
     export DATOMIC_HOME=$HOME/src/stroh/vendor/datomic-pro-0.9.5372
 
+### Couchbase storage
+
+Stroh uses a Couchbase back-end. For development the bucket `strohtest`
+is used, for production the bucket `stroh`.
+
+### Transactor
+
+To start a transactor, first make sure Couchbase is running. Switch to
+the Datomic distribution and run the `transactor` script, passing the
+Couchbase transactor properties file (this should contain the proper
+licence key and connection parameters).
+
+    cd $DATOMIC_HOME
+    bin/transactor /path/to/couchbase-transactor.properties
+
 ### Console
 
 To start a Datomic console (an admin UI in the browser), first make sure
