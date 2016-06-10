@@ -86,3 +86,17 @@ the Datomic distribution and run `bin/console`:
     bin/console -p 8080 strohtest datomic:couchbase://localhost/strohtest/
 
 Access the console at `http://localhost:8080/browse`.
+
+### Backup and restore
+
+To back up a database, again make sure the storage back-end and a
+transactor are running, then run the `backup-db` command. For example:
+
+    cd $DATOMIC_HOME
+    bin/datomic backup-db datomic:couchbase://localhost:4334/strohtest/strohtest file:/path/to/backup/strohtest
+
+To restore the database from a backup, run `restore-db` instead, with
+the arguments reversed. For example:
+
+    cd $DATOMIC_HOME
+    bin/datomic restore-db file:/path/to/backup/strohtest datomic:couchbase://localhost:4334/strohtest/strohtest
