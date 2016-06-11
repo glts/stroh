@@ -14,7 +14,8 @@
     :task.type/film
     :task.type/video
     :task.type/event
-    :task.type/article})
+    :task.type/article
+    :task.type/audio})
 
 (s/def ::task
   (s/keys :req [:task/id :task/title :task/status :task/type]))

@@ -1,0 +1,2 @@
+[:add-task-type-audio
+ [[:db/add #db/id[:db.part/user] :db/ident :task.type/audio]]]

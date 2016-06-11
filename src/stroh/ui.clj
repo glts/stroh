@@ -17,7 +17,8 @@
    :task.type/film (cp 0x1F4FD)
    :task.type/video (cp 0x1F4FA)
    :task.type/event (cp 0x1F39F)
-   :task.type/article (cp 0x1F4D1)})
+   :task.type/article (cp 0x1F4D1)
+   :task.type/audio (cp 0x1F4FB)})
 
 (defsnippet task-item "templates/activities.html" [:#open :> :p]
   [task]
