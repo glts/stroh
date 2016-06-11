@@ -100,3 +100,10 @@ the arguments reversed. For example:
 
     cd $DATOMIC_HOME
     bin/datomic restore-db file:/path/to/backup/strohtest datomic:couchbase://localhost:4334/strohtest/strohtest
+
+## Licence
+
+Copyright © 2016 David Bürgin
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
