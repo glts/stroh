@@ -2,7 +2,8 @@
   "Development utilities for Stuart Sierra's reloaded workflow."
   (:require [clojure.tools.namespace.repl :refer [refresh]]
             [com.stuartsierra.component :as component]
-            [stroh.config :as config]))
+            [stroh.config :as config]
+            [stroh.migrate :refer [ensure-migrations]]))
 
 (def dev-config
   {:server {:port 3000}
@@ -23,3 +24,5 @@
 
 #_(start)
 #_(reset)
+
+#_(ensure-migrations (:database system))

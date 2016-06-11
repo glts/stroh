@@ -1,14 +1,11 @@
 (ns stroh.main
   "Main entry point for the stand-alone artefact of the Stroh app."
-  (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [clojure.tools.logging :as log]
+  (:require [clojure.tools.logging :as log]
             [com.stuartsierra.component :as component]
-            [stroh.config :as config])
+            [stroh.config :as config]
+            [stroh.migrate :refer [ensure-migrations]]
+            [stroh.util.edn :refer [read-resource]])
   (:gen-class))
-
-(defn- read-config []
-  (edn/read-string (slurp (io/resource "config.edn"))))
 
 (defn- log-uncaught-exceptions! []
   (Thread/setDefaultUncaughtExceptionHandler
@@ -23,7 +20,9 @@
   "Starts the application when run as a uberjar."
   [& args]
   (log-uncaught-exceptions!)
-  (let [options (read-config)
+  (let [options (read-resource "config.edn")
         system (component/start (config/system options))]
     (run-on-shutdown! #(component/stop system))
+    (future
+      (ensure-migrations (:database system)))
     (log/info "stroh system started")))
