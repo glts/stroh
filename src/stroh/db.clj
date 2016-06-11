@@ -73,11 +73,11 @@
   "Stores the specified task in the database."
   [database task]
   (let [tx (create-task-tx task)]
-    (d/transact (:connection database) tx)))
+    @(d/transact (:connection database) tx)))
 
 (defn update-status
   "Updates status of task identified by id, throwing if doesn't exist."
   [database id status]
   (let [conn (:connection database)]
-    (d/transact conn [{:db/id [:task/id id]
+    @(d/transact conn [{:db/id [:task/id id]
                        :task/status status}])))
