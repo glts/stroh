@@ -1,2 +1,9 @@
 [:add-task-type-audio
- [[:db/add #db/id[:db.part/user] :db/ident :task.type/audio]]]
+ [[:db/add #db/id[:db.part/user] :db/ident :task.type/audio]]
+
+ :add-task-description
+ [{:db/id #db/id[:db.part/db]
+   :db/ident :task/description
+   :db/valueType :db.type/string
+   :db/cardinality :db.cardinality/one
+   :db.install/_attribute :db.part/db}]]
