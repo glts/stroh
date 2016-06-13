@@ -20,20 +20,17 @@
                         :db/unique :db.unique/identity
                         :db.install/_attribute :db.part/db}])))
 
-(defn- migration-installed? [db migration-key]
-  (boolean (d/entity db [migration-key-attr migration-key])))
+(defn- migration-installed? [db key]
+  (boolean (d/entity db [migration-key-attr key])))
 
-(defn- with-migration-key [k tx-data]
-  (conj tx-data [:db/add (d/tempid :db.part/tx) migration-key-attr k]))
-
-(defn- apply-migration [conn [migration-key tx-data]]
-  (when-not (migration-installed? (d/db conn) migration-key)
-    (log/info "apply migration" migration-key)
-    @(d/transact conn (with-migration-key migration-key tx-data))))
+(defn- with-migration-key [key tx-data]
+  (conj tx-data [:db/add (d/tempid :db.part/tx) migration-key-attr key]))
 
 (defn- apply-migrations [conn migrations]
-  (doseq [m (partition 2 migrations)]
-    (apply-migration conn m)))
+  (doseq [[key tx-data] (partition 2 migrations)]
+    (when-not (migration-installed? (d/db conn) key)
+      (log/info "apply migration" key)
+      @(d/transact conn (with-migration-key key tx-data)))))
 
 (defn ensure-migrations
   "Ensures that all migrations are installed in the database, applying
